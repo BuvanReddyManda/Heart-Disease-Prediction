@@ -4,7 +4,8 @@ import numpy as np
 
 app = Flask(__name__)
 
-model = pickle.load(open("clfmodel.pkl","rb"))
+model1 = pickle.load(open("clfmodel.pkl","rb"))
+model2 = pickle.load(open("insurance_prediction.pkl","rb"))
 
 @app.route('/')
 def home():
@@ -27,11 +28,30 @@ def predict():
         slope = request.form.get('slope')
         ca = int(request.form['ca'])
         thal = request.form.get('thal')
+        bmi = float(request.form['bmi'])
+        children = int(request.form['children'])
+        smoker = request.form.get('smoker')
+        region = request.form.get('region')
+        mobile = request.form.get('mobile')
         
-        data = np.array([[age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
-        my_prediction = model.predict(data)
-        
-        return render_template('result.html', prediction=my_prediction)
+        data1 = np.array([[age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
+        data2 = np.array([[age,sex,bmi,children,smoker,region]]).reshape(1,-1)
+        my_prediction1 = model1.predict(data1)
+        my_prediction2 = model2.predict(data2)[0]
+        from twilio.rest import Client
+  
+        # Your Account Sid and Auth Token from twilio.com / console
+        account_sid = 'ACab5818a9b3b8af6f717b6c4ee2e948f8'
+        auth_token = '626472d5f5e4b4c50f97fd89360c4feb'
+        if(my_prediction1==1):
+  
+            client = Client(account_sid, auth_token)
+            message = client.messages.create(
+                                from_='+15077040615',
+                                body ='You have chances of heart disease.Please consult a doctor at the earliest',
+                                to =mobile
+                            )
+        return render_template('result.html', prediction1=my_prediction1,prediction_text = "The cost of health insurance per year is {}").format(my_prediction2)
         
         
 

@@ -17,16 +17,18 @@
 		<div class="container">
             <h2 class="container-heading"><span class="heading_font">Heart Disease Predictor</span></h2>
             <div class="description">
-    			<p>A Machine Learning Web App, Built with Flask, Deployed using Heroku.</p>
+    			<p>A Machine Learning Web App, Built with Flask.</p>
     		</div>
     	</div>
 
 		<!-- Result -->
 		<div class="results">
-			{% if prediction==1 %}
+			{% if prediction1==1 %}
 				<h1>Prediction: <span class="danger">Oops! You have Chances of Heart Disease.</span></h1>
+
+				{{prediction_text}}
 				
-			{% elif prediction==0 %}
+			{% elif prediction1==0 %}
 				<h1>Prediction: <span class="safe">Great! You DON'T chances have Heart Disease.</span></h1>
 				
 			{% endif %}
