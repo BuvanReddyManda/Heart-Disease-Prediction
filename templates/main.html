@@ -18,8 +18,7 @@
   <div class="container">
     <h2 class="container-heading"><span class="heading_font">Heart Disease Predictor</span></h2>
     <div class="description">
-      <p>A Machine Learning Web Application that predicits chances of having heart Disease or not, Built with Flask and Deployed using Heroku.</p><br>
-        <p>(Note:This model is 82.67% accurate)</p>
+      <p>A Machine Learning Web Application that predicits chances of having heart Disease or not and also calculates the estimated price of life insurance per year, Built with Flask.</p><br>
     </div>
   </div>
 
@@ -45,10 +44,10 @@
         <label for="cp">Chest Pain Type</label>
         <select id="cp" name="cp">
           <option selected>----select option----</option>
-          <option value="0">Typical Angina</option>
+          <option value="0">Asymptomatic</option>
           <option value="1">Atypical Angina</option>
           <option value="2">Non-anginal Pain</option>
-          <option value="3">Asymtomatic</option>
+          <option value="3">Typicak Angina</option>
         </select><br>
 
 
@@ -103,9 +102,9 @@
         <label for="slope">slope of the peak exercise ST segment</label>
         <select id="slope" name="slope">
           <option selected>----select option----</option>
-          <option value="0">Upsloping</option>
+          <option value="0">Downsloping</option>
           <option value="1">Flat</option>
-          <option value="2">Downsloping</option>
+          <option value="2">Upsloping</option>
         </select><br>
         
 
@@ -117,9 +116,9 @@
         <label for="thal">Thalassemia</label> 
         <select id="thal" name="thal">
           <option selected>----select option----</option>
-          <option value="0">Normal</option>
-          <option value="1">Fixed Defect</option> 
-          <option value="2">Reversible Defect</option>  
+          <option value="1">Fixed Defect</option>
+          <option value="2">Normal</option> 
+          <option value="3">Reversible Defect</option>  
         </select><br>
 
 
@@ -153,9 +152,25 @@
         <input type="text" id="mobile" name="mobile" placeholder="Enter Your Mobile Number"><br>
 
 
+        <label for="model1">Classification Model</label>
+        <select id="model1" name="model1">
+          <option selected>----select option----</option>
+          <option value="0">Logistic Regression</option>
+          <option value="1">Naive Bayes</option>
+          <option value="2">SVM</option>
+          <option value="3">K-Nearest Neighbours</option>
+          <option value="4">Decision Tree</option>
+          <option value="5">Random Forest</option>
+        </select><br>
 
-
-
+        <label for="model2">Regression Model</label>
+        <select id="model2" name="model2">
+          <option selected>----select option----</option>
+          <option value="0">Linear Regression</option>
+          <option value="1">SVM</option>
+          <option value="2">Random Forest</option>
+          <option value="3">Gradient Boost</option>
+        </select><br>
       
 
       <input type="submit" class="my-cta-button" value="Predict">
@@ -168,7 +183,7 @@
       <a target="_blank" href="https://github.com/BuvanReddyManda/Heart-Disease-Prediction"><i
           class="fab fa-github fa-lg contact-icon"></i></a>
     </div>
-    <p class="footer-description">Made by Buvan Reddy.</p>
+    <p class="footer-description"></p>
   </div>
 
 </body>

@@ -25,22 +25,25 @@
 		<div class="results">
 			{% if prediction1==1 %}
 				<h1>Prediction: <span class="danger">Oops! You have Chances of Heart Disease.</span></h1>
-
-				{{prediction_text}}
+				<h2>Estimated Life Insurance Cost: <span class="life">{{prediction_text}} {{prediction3}}</span></h2>
+				<h3><span class="msg">Thank You! Please check out your mobile :)</span></h3>
+				<img src="../static/img/danger.png" alt="Danger">
 				
 			{% elif prediction1==0 %}
-				<h1>Prediction: <span class="safe">Great! You DON'T chances have Heart Disease.</span></h1>
-				
+				<h1>Prediction: <span class="safe">Great! You DON'T have Chances of Heart Disease.</span></h1>
+				<h2>Estimated Life Insurance Cost: <span class="life">{{prediction_text}} {{prediction3}}</span></h2>
+				<h3><span class="msg">Thank You! Please check out your mobile :)</span></h3><br>
+				<img class = "img-safe" src="../static/img/safe.png" alt="Safe">
+
 			{% endif %}
 		</div>
 
 		<!-- Footer -->
-       <div class="footer">
-           <div class="contact">
-               <a target="_blank" href="https://github.com/BuvanReddyManda/Heart-Disease-Prediction"><i class="fab fa-github fa-lg contact-icon"></i></a>
-           </div>
-           <p class="footer-description">Made by Buvan Reddy.</p>
-       </div>
+		<div class="footer">
+    		<div class="contact">
+        		<a target="_blank" href="https://github.com/BuvanReddyManda/Heart-Disease-Prediction"><i class="fab fa-github fa-lg contact-icon"></i></a>
+    		</div>
+		</div>
 
 	</body>
 </html>

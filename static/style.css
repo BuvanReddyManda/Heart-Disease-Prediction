@@ -18,7 +18,7 @@ body{
 .container{
     padding: 30px;
 	position:relative;
-	background: linear-gradient(45deg, #161616, #383436, #161616);
+	background: linear-gradient(45deg, #db2f2f, #312a2d, #424646);
 	background-size: 500% 500%;
 	animation: change-gradient 10s ease-in-out infinite;
 }
@@ -39,7 +39,7 @@ body{
 }
 
 .heading_font{
-    color: #ffffff;
+    color: #49b2ca;
 	font-family: 'Pacifico', cursive;
 	font-size: 35px;
 	font-weight: normal;
@@ -147,4 +147,16 @@ label {
 
 .safe{
     color: green;
+}
+
+.life{
+	color:darkorange;
+}
+
+.msg{
+	color:cornflowerblue
+}
+.img-safe{
+	width: 1000px;
+	height: 500px;
 }
