@@ -18,7 +18,7 @@ body{
 .container{
     padding: 30px;
 	position:relative;
-	background: linear-gradient(45deg, #db2f2f, #312a2d, #424646);
+	background: linear-gradient(45deg,#289b67,#88b217, #db2f2f, #5e273f, #35a3a3);
 	background-size: 500% 500%;
 	animation: change-gradient 10s ease-in-out infinite;
 }

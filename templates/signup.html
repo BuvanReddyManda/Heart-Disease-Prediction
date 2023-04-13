@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign up</title>
+    <style>
+        body {
+            background: url("https://img.freepik.com/free-vector/banner-medical-care-with-human-heart_1419-2188.jpg?w=1380&t=st=1681276267~exp=1681276867~hmac=88f40e01bc2b1853f3e30782782a1bee4275b377d8432365d34f4ab7c84311d9") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+            border: 1px solid #CCCCCC;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px #CCCCCC;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0px 0px 5px #CCCCCC;
+            width: 250px;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            background-color: #f03304;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color:#2ce80b;
+        }
+
+        a {
+            color: #e80b0b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sign up</h1>
+    <form method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <input type="submit" value="Sign up">
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+</body>
+</html>

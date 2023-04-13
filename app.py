@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, app, jsonify, url_for
+from flask import Flask, render_template, request, app, jsonify, url_for, redirect
 import pickle
 import numpy as np
 
@@ -17,22 +17,42 @@ reg2 = pickle.load(open("life_insurance_predictionrf.pkl","rb"))
 reg3 = pickle.load(open("life_insurance_predictiongr.pkl","rb"))
 
 
-@app.route('/')
-def hello_world():
-    return render_template("login.html")
-database={'buvan':'buvan','sarath':'sarath','chaitanya':'chaitanya'}
+users = {}
 
-@app.route('/form_login',methods=['POST','GET'])
+# signup route
+@app.route('/', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        # create new user
+        username = request.form['username']
+        password = request.form['password']
+        users[username] = password
+        # redirect to login page
+        return redirect(url_for('login'))
+    # render signup form
+    return render_template('signup.html')
+
+# login route
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    name1=request.form['username']
-    pwd=request.form['password']
-    if name1 not in database:
-         return render_template('login.html',info='Invalid User')
-    else:
-         if database[name1]!=pwd:
-              return render_template('login.html',info='Invalid Password')
-         else:
-              return render_template('main.html',name=name1)
+    if request.method == 'POST':
+        # check if user exists and password is correct
+        username = request.form['username']
+        password = request.form['password']
+        if username in users and users[username] == password:
+            # redirect to welcome page
+            return redirect(url_for('welcome', username=username))
+        # if login fails, render login form with error message
+        error = 'Invalid username or password'
+        return render_template('login.html', error=error)
+    # render login form
+    return render_template('login.html')
+
+# welcome route
+@app.route('/welcome/<username>')
+def welcome(username):
+    # render welcome page with username
+    return render_template('main.html', username=username)
 
 
 @app.route('/predict', methods=['GET','POST'])
@@ -94,31 +114,26 @@ def predict():
              
         
         
-        from twilio.rest import Client
-  
-        # Your Account Sid and Auth Token from twilio.com / console
-        account_sid = '********************************'
-        auth_token = '********************************'
-        if(my_prediction1==1):
-  
-            client = Client(account_sid, auth_token)
-            message = client.messages.create(
-                                from_='*********',
-                                body ='You have chances of heart disease.Please consult a doctor at the earliest',
-                                to =mobile
-                            )
-            
-        elif(my_prediction1==0):
-  
-            client = Client(account_sid, auth_token)
-            message = client.messages.create(
-                                from_='***********',
-                                body ='Congratulations You do not have major chances of heart disease',
-                                to =mobile
-                            )
         return render_template('result.html', prediction1=my_prediction1,prediction3=my_prediction3,prediction_text = "The cost of health insurance per year is {}").format(my_prediction2)
         
         
+@app.route('/clickhere')
+def clickhere():
+     return render_template('k.html')
 
+
+
+
+@app.route('/details')
+def index():
+    return render_template('k.html')
+
+
+
+
+
+@app.route('/back')
+def back():
+     return render_template('main.html')
 if __name__ == '__main__':
 	app.run(debug=True)

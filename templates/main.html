@@ -3,6 +3,7 @@
 <html lang="en" dir="ltr">
 
 <head>
+  <title>Welcome, {{ username }}!</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heart Disease Predictor</title>
@@ -12,6 +13,7 @@
 </head>
 
 <body>
+ 
 
   <!-- Website Title -->
 
@@ -21,7 +23,11 @@
       <p>A Machine Learning Web Application that predicits chances of having heart Disease or not and also calculates the estimated price of life insurance per year, Built with Flask.</p><br>
     </div>
   </div>
-
+  <h2 style="color:rgb(0, 0, 0);font-size:20px;">Welcome, {{ username }}! To know more about this project</h2>
+  <form action="{{ url_for('clickhere')}}"> <input type="submit" class="my-cta-button" value="clickhere"></form>
+  <h3 style="color:rgb(8, 8, 8);font-size:20px;">
+    <marquee> You have successfully logged in,plz fill the details in the following form for heart disease prediction and to caluclate the insurance
+    </marquee></h3>
   <!-- Text Area -->
   <div class="ml-container">
     <form action="{{ url_for('predict')}}" method="POST"> 
@@ -76,8 +82,7 @@
           <option selected>----select option----</option>
           <option value="0">Normal</option>
           <option value="1">Having ST-T wave abnormality</option>
-          <option value="2">Probable or definite left ventricular
-            hypertrophy</option>
+          <option value="2">Probable or definite left ventricular hypertrophy</option>
         </select><br>
 
 

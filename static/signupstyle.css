@@ -1,0 +1,67 @@
+/* Set background color and font for the entire page */
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the sign up form container */
+#signup-form {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 50px auto;
+    max-width: 500px;
+    padding: 30px;
+}
+
+/* Style the form fields */
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="password"] {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Style the sign up button */
+.btn {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.btn:hover {
+    background-color: #3e8e41;
+}
+
+/* Style the log in link */
+#signup-form p {
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#signup-form p a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+#signup-form p a:hover {
+    text-decoration: underline;
+}

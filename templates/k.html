@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drop-down boxes with description</title>
+	<style>
+		body {
+			background-image: url('https://mcdn.wallpapersafari.com/medium/19/47/8lxQfk.jpg');
+			background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+		}
+
+		.select-container {
+			margin: 20px;
+		}
+
+		form {
+			display: inline-block;
+			background-color: rgb(140, 196, 35);
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		form label {
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		#description {
+			text-align: center;
+			color: rgb(0, 0, 0);
+			font-size: 1.5rem;
+			margin-top: 20px;
+		}
+
+        img {
+			width: 1000px;
+	        height: 500px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="select-container">
+			<form>
+				<label for="heart-disease">Heart Disease Risk Factors:</label>
+				<select name="heart-disease" id="heart-disease">
+					<option value="">Select an option</option>
+					<option value="age">Age</option>
+					<option value="sex">Sex</option>
+                    <option value="cp">ChestPain Type</option>
+                    <option value="trestbps">Resting Blood Pressure</option>
+                    <option value="chol">Serum Cholesterol</option>
+                    <option value="fbs">Fasting Blood Sugar</option>
+                    <option value="restecg">Resting ECG Results</option>
+                    <option value="thalach">Max Heart Rate</option>
+                    <option value="exang">Exercise-induced Angina</option>
+                    <option value="oldpeak">ST depression</option>
+                    <option value="slope">slope of the peak exercise ST segment</option>
+                    <option value="ca">Number of Major vessels</option>
+                    <option value="thal">Thalassemia</option>
+                    <option value="bmi">Body mass index</option>
+                    
+                    
+				</select>
+			</form>
+		</div>
+
+		<div class="select-container">
+			<form>
+				<label for="ml-details">ML Details:</label>
+				<select name="ml-details" id="ml-details">
+					<option value="">Select an option</option>
+					<option value="svm">SVM</option>
+					<option value="knn">KNN</option>
+				</select>
+			</form>
+		</div>
+	</div>
+
+	<p id="description"></p>
+    <div class="wrapper"></div>
+
+	<script>
+		const heartDiseaseSelect = document.querySelector('#heart-disease');
+		const mlDetailsSelect = document.querySelector('#ml-details');
+		const descriptionElement = document.querySelector('#description');
+        const img = document.createElement('img');
+
+		heartDiseaseSelect.addEventListener('change', (event) => {
+			const option = event.target.value;
+			let description = "";
+			if (option == 'age') {
+				description = "The age of the patient. The normal range varies depending on gender, but in general, a normal range for adults is between 18 to 65 years. Higher age is considered a risk factor for heart disease.";
+                img.src="../static/img/agevsmaxhrt.png"
+			} 
+            else if (option == 'sex') {
+				description = "The gender of the patient. It is a categorical variable, and it has two categories: 1 for male and 0 for female. Men are considered to be at a higher risk of developing heart disease than women.";
+                img.src="../static/img/gender.png"
+            }
+            else if (option == 'cp') {
+				description = "The type of chest pain experienced by the patient. It is a categorical variable, and it has four categories: 1 for typical angina, 2 for atypical angina, 3 for non-anginal pain, and 4 for asymptomatic. Typical angina is the most common type of chest pain associated with heart disease.";
+                img.src="../static/img/cp.png"
+			}
+            else if (option == 'trestbps') {
+				description = "The resting blood pressure of the patient in mm Hg. A normal range for resting blood pressure is typically considered to be between 90/60 mmHg and 120/80 mmHg. Values above this range are considered high and can be a risk factor for heart disease.";
+                img.src="../static/img/agevsrestbp.png"
+            }
+            else if (option == 'chol') {
+				description = "The serum cholesterol level of the patient in mg/dl. A normal range for total cholesterol is typically considered to be below 200 mg/dl. Values above this range are considered high and can be a risk factor for heart disease.";
+                img.src="../static/img/agevschol.png"
+            }
+            else if (option == 'fbs') {
+				description = "The fasting blood sugar level of the patient in mg/dl. A normal range for fasting blood sugar is typically considered to be between 70 to 100 mg/dL. Values above this range are considered high and can be a risk factor for heart disease.";
+                img.src="../static/img/fbs.png"
+            }
+            else if (option == 'restecg') {
+				description = "The resting electrocardiographic results of the patient. It is a categorical variable, and it has three categories: 0 for normal, 1 for having ST-T wave abnormality, and 2 for showing probable or definite left ventricular hypertrophy.";
+                img.src="../static/img/restecg.png"
+            }
+            else if (option == 'thalach') {
+				description = "The maximum heart rate achieved by the patient during exercise. A normal range for maximum heart rate is typically considered to be between 60 to 100 beats per minute (BPM). A lower maximum heart rate achieved during exercise can be a risk factor for heart disease.";
+                img.src="../static/img/agevsmaxhrt.png"
+            }
+            else if (option == 'exang') {
+				description = "Whether the patient experienced angina during exercise or not. It is a categorical variable, and it has two categories: 1 for yes and 0 for no. Experiencing angina during exercise can be a symptom of heart disease.";
+                img.src="../static/img/exang.png"
+            }
+            else if (option == 'oldpeak') {
+				description = "ST depression induced by exercise relative to rest: The ST depression induced by exercise relative to rest. It is a numerical value in millimeters (mm). A higher value of ST depression induced by exercise relative to rest can be a risk factor for heart disease.";
+                img.src="../static/img/agevsoldpeak.png"
+            }
+            else if (option == 'slope') {
+				description = "The slope of the peak exercise ST segment. It is a categorical variable, and it has three categories: 1 for upsloping, 2 for flat, and 3 for downsloping. A downsloping slope of the peak exercise ST segment is associated with a higher risk of heart disease.";
+                img.src="../static/img/slope.png"
+            }
+            else if (option == 'ca') {
+				description = " The number of major vessels colored by fluoroscopy. It is a categorical variable, and it has four categories: 0, 1, 2.";
+                img.src="../static/img/agevsca.png"
+            }
+            else if (option == 'thal') {
+				description = "Thalassemia is a group of inherited blood disorders that affect the production of hemoglobin, which is the protein in red blood cells that carries oxygen to the body's tissues.It is a categorical variable, and it has three categories: 1 for Fixed Defect, 2 for Normal, and 3 for Reversible Defect.";
+                img.src="../static/img/thal.png"
+            }
+            else if (option == 'bmi') {
+				description = "The Body Mass Index";
+			}
+            
+            const image = document.getElementsByClassName('wrapper');
+            image[0].appendChild(img);
+
+
+			descriptionElement.textContent = description;
+		});
+
+		mlDetailsSelect.addEventListener('change', (event) => {
+			const option = event.target.value;
+			let description = "";
+			if (option == 'svm') {
+				description = "Support Vector Machine (SVM) is a machine learning algorithm used for classification and regression analysis.";
+			} else if (option == 'knn') {
+				description = "K-Nearest Neighbors (KNN) is a machine learning algorithm used for classification and regression analysis.";
+			}
+			descriptionElement.textContent = description;
+		});
+	</script>
+	<form action="{{ url_for('back')}}"> <input type="submit" class="my-cta-button" value="back"></form>
+</body>
+</html>
