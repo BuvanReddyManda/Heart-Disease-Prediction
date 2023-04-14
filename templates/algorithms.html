@@ -36,7 +36,7 @@
 		}
 
 		#description {
-			text-align: center;
+			text-align: justify;
 			color: rgb(0, 0, 0);
 			font-size: 1.5rem;
 			margin-top: 20px;
@@ -99,7 +99,7 @@
                 img.src="../static/img/svmcf.png"
 			}
             else if (option == 'knn') {
-				description = "K-Nearest Neighbors (K-NN) is a supervised learning algorithm used for classification and regression analysis.•	The K-NN algorithm finds the K nearest neighbors of the new data point from the training data based on a distance metric such as Euclidean distance or Manhattan distance and then predicts the label or value of the new data point based on the labels or values of the K nearest neighbors. For classification, the majority class among the K neighbors is chosen as the predicted label. For regression, the average or median value of the K neighbors is chosen as the predicted value.";
+				description = "K-Nearest Neighbors (K-NN) is a supervised learning algorithm used for classification and regression analysis.The K-NN algorithm finds the K nearest neighbors of the new data point from the training data based on a distance metric such as Euclidean distance or Manhattan distance and then predicts the label or value of the new data point based on the labels or values of the K nearest neighbors. For classification, the majority class among the K neighbors is chosen as the predicted label. For regression, the average or median value of the K neighbors is chosen as the predicted value.";
                 img.src="../static/img/knncf.png"
 			}
             else if (option == 'dt') {
@@ -141,6 +141,6 @@
 			descriptionElement.textContent = description;
 		});
 	</script>
-	<form action="{{ url_for('back')}}"> <input type="submit" class="my-cta-button" value="back"></form>
+	<form action="{{ url_for('Back')}}"> <input type="submit" class="my-cta-button" value="Back"></form>
 </body>
 </html>

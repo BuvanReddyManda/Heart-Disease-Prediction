@@ -8,7 +8,15 @@
 			background-size: cover;
             font-family: Arial, sans-serif;
             text-align: center;
+			position: relative;
 		}
+
+		body::after {
+  		content: '';
+  		display: block;
+  		height: 50px; /* Set same as footer's height */
+		}
+
 
 		.container {
 			display: flex;
@@ -45,6 +53,27 @@
         img {
 			width: 1000px;
 	        height: 500px;
+		}
+
+		/* Footer */
+		.footer{
+		flex-shrink: 0;
+		padding: 20px;
+		animation: change-gradient 10s ease-in-out infinite;
+		position: absolute;
+  		bottom: 0;
+  		width: 100%;
+  		height: 50px;
+		}
+
+		.footer-description{
+			color: #ffffff;
+			margin: 0;
+			font-size: 12px;
+		}
+		#bottom {
+  		position: absolute;
+  		bottom: 10;
 		}
 
 	</style>
@@ -151,8 +180,11 @@
 			descriptionElement.textContent = description;
 		});
 	</script>
-	<h2 style="color:rgb(0, 0, 0);font-size:20px;">To Check On the Performance of Models, Click Here</h2>
-  	<form action="{{ url_for('algorithms')}}"> <input type="submit" class="my-cta-button" value="Algorithms"></form>
-	<form action="{{ url_for('back')}}"> <input type="submit" class="my-cta-button" value="back"></form>
+	<!-- Footer -->
+	<div class="footer" >
+		<h2 style="color:rgb(0, 0, 0);font-size:20px;">To Check On the Performance of Models, Click Here</h2>
+  		<form action="{{ url_for('algorithms')}}"> <input type="submit" class="my-cta-button" value="Algorithms"></form>
+		<form action="{{ url_for('back')}}"> <input type="submit" class="my-cta-button" value="Back"></form>
+	</div>
 </body>
 </html>

@@ -17,7 +17,7 @@ reg2 = pickle.load(open("life_insurance_predictionrf.pkl","rb"))
 reg3 = pickle.load(open("life_insurance_predictiongr.pkl","rb"))
 
 
-users = {}
+users = {'buvan':'buvan','sarath':'sarath','chaitanya':'chaitanya'}
 
 # signup route
 @app.route('/', methods=['GET', 'POST'])
@@ -137,5 +137,11 @@ def index():
 @app.route('/back')
 def back():
      return render_template('main.html')
+
+@app.route('/Back')
+def Back():
+     return render_template('k.html')
+
+
 if __name__ == '__main__':
 	app.run(debug=True)
