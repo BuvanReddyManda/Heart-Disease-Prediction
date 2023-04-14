@@ -121,7 +121,9 @@ def predict():
 def clickhere():
      return render_template('k.html')
 
-
+@app.route('/algorithms')
+def algorithms():
+     return render_template('algorithms.html')
 
 
 @app.route('/details')

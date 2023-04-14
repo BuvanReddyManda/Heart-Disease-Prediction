@@ -75,17 +75,6 @@
 				</select>
 			</form>
 		</div>
-
-		<div class="select-container">
-			<form>
-				<label for="ml-details">ML Details:</label>
-				<select name="ml-details" id="ml-details">
-					<option value="">Select an option</option>
-					<option value="svm">SVM</option>
-					<option value="knn">KNN</option>
-				</select>
-			</form>
-		</div>
 	</div>
 
 	<p id="description"></p>
@@ -93,7 +82,6 @@
 
 	<script>
 		const heartDiseaseSelect = document.querySelector('#heart-disease');
-		const mlDetailsSelect = document.querySelector('#ml-details');
 		const descriptionElement = document.querySelector('#description');
         const img = document.createElement('img');
 
@@ -162,18 +150,9 @@
 
 			descriptionElement.textContent = description;
 		});
-
-		mlDetailsSelect.addEventListener('change', (event) => {
-			const option = event.target.value;
-			let description = "";
-			if (option == 'svm') {
-				description = "Support Vector Machine (SVM) is a machine learning algorithm used for classification and regression analysis.";
-			} else if (option == 'knn') {
-				description = "K-Nearest Neighbors (KNN) is a machine learning algorithm used for classification and regression analysis.";
-			}
-			descriptionElement.textContent = description;
-		});
 	</script>
+	<h2 style="color:rgb(0, 0, 0);font-size:20px;">To Check On the Performance of Models, Click Here</h2>
+  	<form action="{{ url_for('algorithms')}}"> <input type="submit" class="my-cta-button" value="Algorithms"></form>
 	<form action="{{ url_for('back')}}"> <input type="submit" class="my-cta-button" value="back"></form>
 </body>
 </html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drop-down boxes with description</title>
+	<style>
+		body {
+			background-image: url('https://mcdn.wallpapersafari.com/medium/19/47/8lxQfk.jpg');
+			background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+		}
+
+		.select-container {
+			margin: 20px;
+		}
+
+		form {
+			display: inline-block;
+			background-color: rgb(140, 196, 35);
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		form label {
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		#description {
+			text-align: center;
+			color: rgb(0, 0, 0);
+			font-size: 1.5rem;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="select-container">
+			<form>
+				<label for="classification-algos">Classification Algorithms:</label>
+				<select name="classification-algos" id="classification-algos">
+					<option value="">Select an option</option>
+					<option value="lr">Logistic Regression</option>
+					<option value="nb">Naive Bayes</option>
+                    <option value="svm">SVM</option>
+                    <option value="knn">k-Nearest Neighbors</option>
+                    <option value="dt">Decision Tree</option>
+                    <option value="rf">Random Forest</option>
+				</select>
+			</form>
+		</div>
+
+		<div class="select-container">
+			<form>
+				<label for="regression-algos">Regression Algorithms:</label>
+				<select name="regression-algos" id="regression-algos">
+					<option value="">Select an option</option>
+					<option value="LR">Linear Regression</option>
+					<option value="SVM">SVM</option>
+                    <option value="RF">Random Forest</option>
+                    <option value="GB">Gradient Boost</option>
+				</select>
+			</form>
+		</div>
+	</div>
+
+	<p id="description"></p>
+    <div class="wrapper"></div>
+
+	<script>
+		const ClfAlgosSelect = document.querySelector('#classification-algos');
+		const RegAlgosSelect = document.querySelector('#regression-algos');
+		const descriptionElement = document.querySelector('#description');
+        const img = document.createElement('img');
+
+		ClfAlgosSelect.addEventListener('change', (event) => {
+			const option = event.target.value;
+			let description = "";
+			if (option == 'lr') {
+				description = "Logistic regression is a type of supervised learning algorithm used to predict the probability of a categorical outcome (e.g., binary, multi-class) based on one or more predictor variables.The logistic regression algorithm works by fitting a logistic function to the data, which is a function that outputs a probability value between 0 and 1. The logistic function is typically defined as: p = 1 / (1 + e^(-z))";
+                img.src="../static/img/lrcf.png"
+			} 
+            else if (option == 'nb') {
+				description = "Naive Bayes is a type of probabilistic classification algorithm used in machine learning to predict the probability of a categorical outcome (e.g., binary, multi-class) based on one or more predictor variables. It is based on Bayes' theorem, which is a probability theory that describes the relationship between conditional probabilities.";
+                img.src="../static/img/nbcf.png"
+			}
+            else if (option == 'svm') {
+				description = "Support vector machine (SVM) is a type of supervised learning algorithm used for classification and regression analysis. The basic idea behind SVM is to find a hyperplane that separates the data into different classes with maximum margin. The margin is defined as the distance between the hyperplane and the closest data points from each class. The optimal hyperplane is the one that maximizes the margin.";
+                img.src="../static/img/svmcf.png"
+			}
+            else if (option == 'knn') {
+				description = "K-Nearest Neighbors (K-NN) is a supervised learning algorithm used for classification and regression analysis.•	The K-NN algorithm finds the K nearest neighbors of the new data point from the training data based on a distance metric such as Euclidean distance or Manhattan distance and then predicts the label or value of the new data point based on the labels or values of the K nearest neighbors. For classification, the majority class among the K neighbors is chosen as the predicted label. For regression, the average or median value of the K neighbors is chosen as the predicted value.";
+                img.src="../static/img/knncf.png"
+			}
+            else if (option == 'dt') {
+				description = "Decision tree is a supervised learning algorithm used for classification and regression analysis. The algorithm works by partitioning the data into subsets based on the values of one or more input features, in a way that maximizes the information gain or minimizes the impurity at each split. A decision tree consists of a root node, which represents the entire dataset, and a set of internal nodes and leaf nodes, which represent the decision rules and the class labels or values, respectively. Each internal node corresponds to a feature and a threshold value, and each leaf node corresponds to a class label or a predicted value.";
+                img.src="../static/img/dtcf.png"
+			}
+            else if (option == 'rf') {
+				description = "Random Forest is an ensemble learning algorithm used for classification and regression analysis. The algorithm works by constructing a multitude of decision trees and combining their predictions to obtain a more accurate and robust prediction.The main advantage of the random forest algorithm is its ability to handle high-dimensional data and to prevent overfitting by reducing the variance of the individual decision trees. This is achieved by the random selection of subsets of the training data and input features for each tree, which leads to a diverse set of trees that can capture different aspects of the data.";
+                img.src="../static/img/rfcf.png"
+			}
+            
+            const image = document.getElementsByClassName('wrapper');
+            image[0].appendChild(img);
+
+			descriptionElement.textContent = description;
+		});
+
+		RegAlgosSelect.addEventListener('change', (event) => {
+			const option = event.target.value;
+			let description = "";
+			if (option == 'LR') {
+				description = "Linear Regression: A dependent variable (also known as the response variable) and one or more independent variables are modelled linearly using the statistical technique of linear regression (also known as predictor variables or features). Finding the best-fit line that minimises the difference between the predicted values and the actual values of the dependent variable is the aim of linear regression.";
+                img.src="../static/img/lrreg.png"
+			} 
+            else if (option == 'SVM') {
+				description = "Support vector machine (SVM) is a type of supervised learning algorithm used for classification and regression analysis. The basic idea behind SVM is to find a hyperplane that separates the data into different classes with maximum margin. The margin is defined as the distance between the hyperplane and the closest data points from each class. The optimal hyperplane is the one that maximizes the margin.";
+                img.src="../static/img/svrreg.png"
+			}
+            else if (option == 'RF') {
+				description = "Random Forest is a machine learning algorithm used for both regression and classification problems. A number of decision trees are built using this ensemble learning technique, and then their predictions are combined to get a final prediction.Each decision tree is constructed using Random Forest by randomly choosing a subset of features and a subset of training data. This randomization aids in lowering overfitting and enhancing the model's generalisation capabilities. Using majority voting (in classification issues) or averaging, the predictions from the decision trees in a Random Forest are integrated (in regression problems).";
+                img.src="../static/img/rfreg.png"
+			}
+            else if (option == 'GB') {
+				description = "Gradient Boosting is a machine learning algorithm used for both regression and classification problems. It is a type of ensemble method where multiple weak models are combined to create a strong model. The algorithm works by iteratively adding new models to the ensemble, with each new model focusing on the instances that were misclassified by the previous models.";
+                img.src="../static/img/gbreg.png"
+			}
+            const image = document.getElementsByClassName('wrapper');
+            image[0].appendChild(img);
+			descriptionElement.textContent = description;
+		});
+	</script>
+	<form action="{{ url_for('back')}}"> <input type="submit" class="my-cta-button" value="back"></form>
+</body>
+</html>
