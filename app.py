@@ -111,7 +111,31 @@ def predict():
         elif m2==3:
              my_prediction2 = reg3.predict(data2)[0]
              my_prediction3 = "(Accuarcy:87.8%)"
-             
+
+     
+        from twilio.rest import Client
+  
+        # Your Account Sid and Auth Token from twilio.com / console
+        account_sid = '*******************************'
+        auth_token = '*******************************'
+        if(my_prediction1==1):
+  
+            client = Client(account_sid, auth_token)
+            message = client.messages.create(
+                                from_='***********',
+                                body ='You have chances of heart disease.Please consult a doctor at the earliest',
+                                to =mobile
+                            )
+            
+        elif(my_prediction1==0):
+  
+            client = Client(account_sid, auth_token)
+            message = client.messages.create(
+                                from_='************',
+                                body ='Congratulations You do not have major chances of heart disease',
+                                to =mobile
+                            )     
+        
         
         
         return render_template('result.html', prediction1=my_prediction1,prediction3=my_prediction3,prediction_text = "The cost of health insurance per year is {}").format(my_prediction2)
@@ -141,6 +165,10 @@ def back():
 @app.route('/Back')
 def Back():
      return render_template('k.html')
+
+@app.route('/logout')
+def logout():
+     return render_template('thank.html')
 
 
 if __name__ == '__main__':
