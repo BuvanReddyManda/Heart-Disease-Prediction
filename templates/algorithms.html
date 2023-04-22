@@ -4,7 +4,7 @@
 	<title>Drop-down boxes with description</title>
 	<style>
 		body {
-			background-image: url('https://mcdn.wallpapersafari.com/medium/19/47/8lxQfk.jpg');
+			background-image: url('https://img.freepik.com/free-photo/pastel-watercolor-texture-background_1083-168.jpg?1&w=1060&t=st=1681574988~exp=1681575588~hmac=adbbdc2f70230fae3d41cb6ed16fe3828f494608ac2231d3960a01e208db517d');
 			background-size: cover;
             font-family: Arial, sans-serif;
             text-align: center;
@@ -25,7 +25,7 @@
 
 		form {
 			display: inline-block;
-			background-color: rgb(140, 196, 35);
+			
 			padding: 10px;
 			border-radius: 10px;
 		}
@@ -73,7 +73,6 @@
 			</form>
 		</div>
 	</div>
-
 	<p id="description"></p>
     <div class="wrapper"></div>
 
@@ -139,6 +138,54 @@
             const image = document.getElementsByClassName('wrapper');
             image[0].appendChild(img);
 			descriptionElement.textContent = description;
+		});
+	</script>
+	<p id="result"></p>
+
+	<script>
+		const resultElement = document.querySelector('#result');
+
+		ClfAlgosSelect.addEventListener('change', (event) => {
+			const option = event.target.value;
+			let result = "";
+			if (option == 'lr') {
+				result = "(Accuracy==>87%)";
+			} 
+            else if (option == 'nb') {
+				result = "(Accuracy==>85%)";
+			}
+            else if (option == 'svm') {
+				result = "(Accuracy==>86%)";
+			}
+            else if (option == 'knn') {
+				result = "(Accuracy==>82%)";
+			}
+            else if (option == 'dt') {
+				result = "(Accuracy==>100%)";
+			}
+            else if (option == 'rf') {
+				result = "(Accuracy==>100%)";
+			}
+
+			resultElement.textContent = result;
+		});
+
+		RegAlgosSelect.addEventListener('change', (event) => {
+			const option = event.target.value;
+			let result = "";
+			if (option == 'LR') {
+				result = "(Accuracy==>78.3%)";
+			} 
+            else if (option == 'SVM') {
+				result = "(Accuracy==>72.2%)";
+			}
+            else if (option == 'RF') {
+				result = "(Accuracy==>86.1%)";
+			}
+            else if (option == 'GB') {
+				result = "(Accuracy==>87.8%)";
+			}
+			resultElement.textContent = result;
 		});
 	</script>
 	<form action="{{ url_for('Back')}}"> <input type="submit" class="my-cta-button" value="Back"></form>

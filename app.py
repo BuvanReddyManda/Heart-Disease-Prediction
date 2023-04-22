@@ -116,13 +116,13 @@ def predict():
         from twilio.rest import Client
   
         # Your Account Sid and Auth Token from twilio.com / console
-        account_sid = 'AC4be25b16f45e7b93593d2187fcbd73d8'
-        auth_token = '10da8768bad0855efd697f344c2634b6'
+        account_sid = '*******************************'
+        auth_token = '*******************************'
         if(my_prediction1==1):
   
             client = Client(account_sid, auth_token)
             message = client.messages.create(
-                                from_='+14067306731',
+                                from_='***********',
                                 body ='You have chances of heart disease.Please consult a doctor at the earliest',
                                 to =mobile
                             )
@@ -131,7 +131,7 @@ def predict():
   
             client = Client(account_sid, auth_token)
             message = client.messages.create(
-                                from_='+14067306731',
+                                from_='***********',
                                 body ='Congratulations You do not have major chances of heart disease',
                                 to =mobile
                             )   
@@ -172,4 +172,4 @@ def logout():
 
 
 if __name__ == '__main__':
-	app.run(debug=False, host="0.0.0.0")
+	app.run(debug=True, host='0.0.0.0')
